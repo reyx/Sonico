@@ -1,0 +1,47 @@
+@model IEnumerable<Reyx.Web.Sonico.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-stripped">
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Culture
+        </th>
+        <th>
+            Groups
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+			@item.Name
+        </td>
+        <td>
+			@item.Culture
+        </td>
+        <td>
+			@(item.Groups == null ? "None" : item.Groups.Count.ToString())
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
